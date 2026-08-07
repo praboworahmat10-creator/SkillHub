@@ -1,0 +1,15 @@
+# SkillHub Robots.txt
+User-agent: *
+Allow: /
+Allow: /explore
+Allow: /login
+Allow: /register-customer
+Allow: /register-freelancer
+
+# Disallow private user dashboards from search engine indexing
+Disallow: /customer/
+Disallow: /freelancer/
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://skillhub.id/sitemap.xml
