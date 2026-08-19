@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
-import { FiUser, FiMail, FiLock, FiPhone, FiLayers, FiArrowLeft, FiChevronRight, FiCheck } from 'react-icons/fi';
+import { FiUser, FiMail, FiLock, FiPhone, FiLayers, FiArrowLeft, FiChevronRight, FiCheck, FiEye, FiEyeOff } from 'react-icons/fi';
 import { registerCustomerApi } from '../../services/authService';
 import { useAuth } from '../../context/AuthContext';
 
@@ -199,10 +199,20 @@ const RegisterCustomerPage = () => {
                 <span className="input-group-text bg-light border-end-0 text-muted"><FiLock size={18} /></span>
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  className={`form-control bg-light border-start-0 ps-0 ${errors.password ? 'is-invalid' : ''}`}
-                  placeholder="Minimal 6 karakter"
-                  {...register('password', { required: 'Password wajib diisi', minLength: { value: 6, message: 'Password minimal 6 karakter' } })}
+                  className={`form-control bg-light border-start-0 border-end-0 ps-0 ${errors.password ? 'is-invalid' : ''}`}
+                  placeholder="Minimal 10 karakter"
+                  {...register('password', {
+                    required: 'Password wajib diisi',
+                    minLength: { value: 10, message: 'Password minimal 10 karakter' }
+                  })}
                 />
+                <button
+                  type="button"
+                  className="input-group-text bg-light border-start-0 text-muted"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
+                </button>
               </div>
               {errors.password && <div className="text-danger text-xs mt-1">{errors.password.message}</div>}
             </div>

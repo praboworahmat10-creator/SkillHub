@@ -27,7 +27,7 @@ const RegisterFreelancerPage = () => {
   const calculateStrength = (pass) => {
     let score = 0;
     if (!pass) return { score: 0, label: '', color: '' };
-    if (pass.length >= 8) score += 1;
+    if (pass.length >= 10) score += 1;
     if (/[A-Z]/.test(pass)) score += 1;
     if (/[a-z]/.test(pass)) score += 1;
     if (/[0-9]/.test(pass)) score += 1;
@@ -252,10 +252,10 @@ const RegisterFreelancerPage = () => {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   className={`form-control bg-light border-start-0 border-end-0 ps-0 ${errors.password ? 'is-invalid' : ''}`}
-                  placeholder="Minimal 8 karakter"
+                  placeholder="Minimal 10 karakter"
                   {...register('password', {
                     required: 'Password wajib diisi',
-                    minLength: { value: 8, message: 'Minimal 8 karakter' },
+                    minLength: { value: 10, message: 'Minimal 10 karakter' },
                     validate: (val) => {
                       if (!/[A-Z]/.test(val)) return 'Harus mengandung setidaknya 1 huruf besar';
                       if (!/[a-z]/.test(val)) return 'Harus mengandung setidaknya 1 huruf kecil';

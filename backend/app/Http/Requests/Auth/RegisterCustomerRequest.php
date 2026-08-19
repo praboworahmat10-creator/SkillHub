@@ -14,7 +14,7 @@ class RegisterCustomerRequest extends FormRequest
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|unique:users,email',
             'phone'    => 'nullable|string|max:20',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:10',
         ];
     }
 
@@ -25,7 +25,7 @@ class RegisterCustomerRequest extends FormRequest
             'email.required'     => 'Email wajib diisi.',
             'email.unique'       => 'Email sudah terdaftar.',
             'password.required'  => 'Password wajib diisi.',
-            'password.min'       => 'Password minimal 8 karakter.',
+            'password.min'       => 'Password minimal 10 karakter.',
             'password.confirmed' => 'Konfirmasi password tidak cocok.',
         ];
     }

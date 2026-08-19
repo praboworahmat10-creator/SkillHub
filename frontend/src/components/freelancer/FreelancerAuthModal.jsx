@@ -208,8 +208,8 @@ const FreelancerAuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                     <input
                       type={showPassword ? 'text' : 'password'}
                       className={`form-control bg-light border-start-0 border-end-0 ps-0 ${errors.password ? 'is-invalid' : ''}`}
-                      placeholder="••••••••"
-                      {...register('password', { required: 'Password wajib diisi', minLength: { value: 6, message: 'Password minimal 6 karakter' } })}
+                      placeholder="Minimal 10 karakter"
+                      {...register('password', { required: 'Password wajib diisi', minLength: { value: 10, message: 'Password minimal 10 karakter' } })}
                     />
                     <button
                       type="button"

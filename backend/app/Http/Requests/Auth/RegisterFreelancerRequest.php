@@ -14,7 +14,7 @@ class RegisterFreelancerRequest extends FormRequest
             'name'        => 'required|string|min:3|max:255',
             'email'       => 'required|email|unique:users,email',
             'phone'       => 'nullable|string|max:20',
-            'password'    => 'required|string|min:6',
+            'password'    => 'required|string|min:10',
             'terms'       => 'nullable',
         ];
     }
@@ -31,7 +31,7 @@ class RegisterFreelancerRequest extends FormRequest
             'phone.regex'          => 'Format nomor HP Indonesia tidak valid (misal: 081234567890).',
             'phone.unique'         => 'Nomor HP sudah terdaftar.',
             'password.required'    => 'Password wajib diisi.',
-            'password.min'         => 'Password minimal 8 karakter.',
+            'password.min'         => 'Password minimal 10 karakter.',
             'password.regex'       => 'Password harus mengandung huruf besar, huruf kecil, angka, dan karakter khusus.',
             'password_confirmation.required' => 'Konfirmasi password wajib diisi.',
             'password_confirmation.same'     => 'Konfirmasi password tidak cocok dengan password.',

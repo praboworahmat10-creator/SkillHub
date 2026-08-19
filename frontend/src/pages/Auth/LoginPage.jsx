@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
-import { FiMail, FiLock, FiLayers, FiArrowRight, FiUser } from 'react-icons/fi';
+import { FiMail, FiLock, FiLayers, FiArrowRight, FiUser, FiEye, FiEyeOff } from 'react-icons/fi';
 import { useAuth } from '../../context/AuthContext';
 import { loginApi } from '../../services/authService';
 
 const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const { user, userRole, login } = useAuth();
   const navigate = useNavigate();
 
@@ -114,11 +115,21 @@ const LoginPage = () => {
                       <FiLock size={18} />
                     </span>
                     <input
-                      type="password"
-                      className={`form-control bg-light border-start-0 ps-0 ${errors.password ? 'is-invalid' : ''}`}
-                      placeholder="••••••••"
-                      {...register('password', { required: 'Password wajib diisi' })}
+                      type={showPassword ? 'text' : 'password'}
+                      className={`form-control bg-light border-start-0 border-end-0 ps-0 ${errors.password ? 'is-invalid' : ''}`}
+                      placeholder="Minimal 10 karakter"
+                      {...register('password', {
+                        required: 'Password wajib diisi',
+                        minLength: { value: 10, message: 'Password minimal 10 karakter' }
+                      })}
                     />
+                    <button
+                      type="button"
+                      className="input-group-text bg-light border-start-0 text-muted"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
+                    </button>
                   </div>
                   {errors.password && <div className="text-danger text-xs mt-1">{errors.password.message}</div>}
                 </div>
