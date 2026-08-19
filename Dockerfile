@@ -1,4 +1,4 @@
-FROM php:8.3-cli-alpine
+FROM php:8.4-cli-alpine
 
 # Install system dependencies & PHP extensions for Laravel + MySQL
 RUN apk add --no-cache \
@@ -20,7 +20,7 @@ WORKDIR /app
 COPY backend/ .
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs
 
 # Ensure permissions
 RUN chmod -R 777 storage bootstrap/cache
