@@ -60,6 +60,35 @@ class DatabaseSeeder extends Seeder
 
         $freelancersData = [
             [
+                'email'       => 'freelancer@skillhub.id',
+                'name'        => 'Budi Santoso',
+                'title'       => 'Senior Full-Stack Engineer',
+                'bio'         => 'Full-stack developer 5+ tahun pengalaman di React, Laravel, & MySQL. Siap membangun sistem scalable.',
+                'skills'      => ['React', 'Laravel', 'MySQL', 'Tailwind CSS', 'TypeScript'],
+                'location'    => 'Jakarta, Indonesia',
+                'hourly_rate' => 150000,
+                'avatar'      => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+                'services'    => [
+                    [
+                        'category_slug' => 'pengembangan-web',
+                        'title'         => 'Pembuatan Website Landing Page Modern React & Laravel',
+                        'slug'          => 'pembuatan-website-landing-page-modern-abcde',
+                        'description'   => 'Landing page modern, responsif, dan SEO-friendly menggunakan React + Tailwind. Fitur lengkap & aman.',
+                        'price'         => 500000,
+                        'days'          => 5,
+                        'revisions'     => 3,
+                    ]
+                ],
+                'portfolios'  => [
+                    [
+                        'title'       => 'SaaS Dashboard Analytics App',
+                        'description' => 'Platform analisis data bisnis real-time berbasis Web Socket & Laravel React.',
+                        'image_path'  => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80',
+                        'project_url' => 'https://example.com/saas-dashboard'
+                    ]
+                ]
+            ],
+            [
                 'email'       => 'budi@skillhub.id',
                 'name'        => 'Budi Santoso',
                 'title'       => 'Senior Full-Stack Engineer',
@@ -285,6 +314,72 @@ class DatabaseSeeder extends Seeder
             ]
         );
         $customer->wallet()->firstOrCreate(['user_id' => $customer->id], ['balance' => 500000]);
+
+        // ─── Demo Client Jobs ──────────────────────────────────────────────
+        $webCat = Category::where('slug', 'pengembangan-web')->first();
+        $uiCat = Category::where('slug', 'desain-grafis')->first();
+        $aiCat = Category::where('slug', 'ai-machine-learning')->first();
+
+        $sampleJobs = [
+            [
+                'client_id'        => $customer->id,
+                'category_id'      => $webCat?->id,
+                'title'            => 'Dibutuhkan React & Laravel Developer untuk Marketplace',
+                'description'      => 'Membangun aplikasi website marketplace modern dengan React 18, Tailwind CSS, dan Laravel 11 REST API. Diperlukan developer yang berpengalaman mengimplementasikan autentikasi Sanctum dan pembayaran.',
+                'scope_of_work'    => 'Pengembangan frontend React, integrasi backend API Laravel, setup database MySQL, dan testing.',
+                'requirements'     => 'Minimal 2 tahun pengalaman React + Laravel, paham Git workflow, dan terbiasa dengan REST API.',
+                'deliverables'     => 'Source code lengkap di GitHub repository, dokumentasi API, dan panduan deployment.',
+                'budget_min'       => 3000000,
+                'budget_max'       => 5000000,
+                'job_type'         => 'fixed_price',
+                'experience_level' => 'intermediate',
+                'is_remote'        => true,
+                'location'         => 'Jakarta, Indonesia',
+                'deadline_days'    => 14,
+                'required_skills'  => ['React', 'Laravel', 'MySQL', 'Tailwind CSS', 'TypeScript'],
+                'status'           => 'open',
+            ],
+            [
+                'client_id'        => $customer->id,
+                'category_id'      => $uiCat?->id,
+                'title'            => 'Desain UI/UX Mobile App Fintech & Design System Figma',
+                'description'      => 'Kami membutuhkan Product Designer untuk merancang antarmuka aplikasi dompet digital baru. Proyek mencakup user flow, wireframe, hingga prototype interaktif di Figma.',
+                'scope_of_work'    => 'User research, wireframing 15+ screen UI, design system component library, dan interactive prototype.',
+                'requirements'     => 'Kuasai Figma auto-layout, design system tokens, dan pernah mengerjakan proyek fintech/e-wallet.',
+                'deliverables'     => 'File Figma lengkap (.fig), UI component library, dan prototipe interaktif.',
+                'budget_min'       => 2500000,
+                'budget_max'       => 4000000,
+                'job_type'         => 'fixed_price',
+                'experience_level' => 'expert',
+                'is_remote'        => true,
+                'location'         => 'Bandung, Indonesia',
+                'deadline_days'    => 10,
+                'required_skills'  => ['Figma', 'UI/UX Design', 'Design System', 'Prototyping', 'User Research'],
+                'status'           => 'open',
+            ],
+            [
+                'client_id'        => $customer->id,
+                'category_id'      => $aiCat?->id,
+                'title'            => 'Integrasi AI Chatbot Customer Support berbasis OpenAI API',
+                'description'      => 'Integrasi kecerdasan buatan ChatGPT ke dalam sistem layanan pelanggan e-commerce kami untuk menjawab pertanyaan pembeli secara otomatis 24/7.',
+                'scope_of_work'    => 'Setup OpenAI API, fine-tuning prompt context, integrasi webhook pesan, dan dashboard analitik ringkas.',
+                'requirements'     => 'Pengalaman Python / Node.js, terbiasa dengan OpenAI Chat Completion API & LangChain.',
+                'deliverables'     => 'Backend service AI chatbot terintegrasi dan modul testing API.',
+                'budget_min'       => 4000000,
+                'budget_max'       => 7000000,
+                'job_type'         => 'fixed_price',
+                'experience_level' => 'expert',
+                'is_remote'        => true,
+                'location'         => 'Surabaya, Indonesia',
+                'deadline_days'    => 7,
+                'required_skills'  => ['Python', 'OpenAI API', 'FastAPI', 'LangChain', 'PostgreSQL'],
+                'status'           => 'open',
+            ]
+        ];
+
+        foreach ($sampleJobs as $jobData) {
+            \App\Models\ClientJob::firstOrCreate(['title' => $jobData['title']], $jobData);
+        }
 
         $this->command->info('✅ SkillHub seeder selesai! Demo data berhasil dibuat.');
     }

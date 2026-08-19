@@ -76,8 +76,8 @@ class AuthService
             $user->profile()->create([
                 'bio'           => $data['bio'] ?? null,
                 'skills'        => $data['skills'] ?? null,
-                'location'      => $data['location'] ?? $data['city'] ?? null,
-                'hourly_rate'   => $data['hourly_rate'] ?? null,
+                'location'      => $data['location'] ?? $data['city'] ?? 'Indonesia',
+                'hourly_rate'   => $data['hourly_rate'] ?? 0,
             ]);
 
             // Create wallet
