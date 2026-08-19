@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
@@ -9,8 +9,16 @@ import { loginApi } from '../../services/authService';
 const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { user, userRole, login } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      if (userRole === 'freelancer') navigate('/dashboard/freelancer', { replace: true });
+      else if (userRole === 'customer') navigate('/dashboard/client', { replace: true });
+      else if (userRole === 'admin') navigate('/admin/dashboard', { replace: true });
+    }
+  }, [user, userRole, navigate]);
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -30,46 +38,28 @@ const LoginPage = () => {
           showConfirmButton: false
         });
 
-        const role = userData.role?.name || userData.role;
+        const rawRole = userData.role?.name || userData.role || userData.role_id;
+        let role = 'customer';
+        if (rawRole === 1 || rawRole === '1' || rawRole === 'admin') role = 'admin';
+        else if (rawRole === 2 || rawRole === '2' || rawRole === 'freelancer') role = 'freelancer';
+        else if (rawRole === 3 || rawRole === '3' || rawRole === 'customer') role = 'customer';
+
         if (role === 'customer') navigate('/dashboard/client');
         else if (role === 'freelancer') navigate('/dashboard/freelancer');
         else if (role === 'admin') navigate('/admin/dashboard');
         else navigate('/');
       } else {
-        throw new Error(res.message || 'Login gagal');
+        throw new Error(res.message || 'Alamat email atau kata sandi tidak cocok.');
       }
     } catch (err) {
       console.error('Login error:', err);
-      // Demo fallback – deteksi role berdasarkan email
-      const email = data.email.toLowerCase();
-      const demoRole = email.includes('freelancer') ? 'freelancer'
-        : email.includes('admin') ? 'admin'
-        : 'customer';
-      const demoName = demoRole === 'freelancer' ? 'Budi Santoso (Freelancer)'
-        : demoRole === 'admin' ? 'Admin SkillHub'
-        : 'Pelanggan SkillHub';
-
-      const mockUser = {
-        id: 1,
-        name: demoName,
-        email: data.email,
-        role: demoRole,
-        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80'
-      };
-      login(mockUser, 'demo_sanctum_token_123456');
-
-      await Swal.fire({
-        icon: 'success',
-        title: 'Login Berhasil (Demo Mode)',
-        text: `Masuk sebagai ${mockUser.name}`,
-        timer: 1500,
-        showConfirmButton: false
+      const errMsg = err.response?.data?.message || err.message || 'Gagal masuk. Periksa kembali email dan kata sandi Anda.';
+      
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal Masuk',
+        text: errMsg,
       });
-
-      if (demoRole === 'customer') navigate('/dashboard/client');
-      else if (demoRole === 'freelancer') navigate('/dashboard/freelancer');
-      else if (demoRole === 'admin') navigate('/admin/dashboard');
-      else navigate('/');
     } finally {
       setLoading(false);
     }
@@ -142,9 +132,9 @@ const LoginPage = () => {
                 </button>
               </form>
 
-              {/* Demo Account Tips */}
+              {/* Database Account Credentials Info */}
               <div className="mt-4 p-3 bg-light dark:bg-dark rounded-3 text-xs text-muted">
-                <span className="fw-semibold d-block text-dark mb-1">💡 Tips Akun Demo:</span>
+                <span className="fw-semibold d-block text-dark mb-1">🔑 Akun Database SkillHub (Password: <code>password123</code>):</span>
                 <div>- Customer: <code>customer@skillhub.id</code></div>
                 <div>- Freelancer: <code>freelancer@skillhub.id</code></div>
                 <div>- Admin: <code>admin@skillhub.id</code></div>
@@ -154,12 +144,8 @@ const LoginPage = () => {
 
               <div className="text-center text-muted small">
                 Belum punya akun?{' '}
-                <Link to="/register-customer" className="text-primary fw-semibold text-decoration-none">
-                  Daftar Customer
-                </Link>{' '}
-                atau{' '}
-                <Link to="/register-freelancer" className="text-secondary fw-semibold text-decoration-none">
-                  Daftar Freelancer
+                <Link to="/register" className="text-primary fw-bold text-decoration-none ms-1">
+                  Daftar Sekarang
                 </Link>
               </div>
             </div>

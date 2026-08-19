@@ -1,0 +1,158 @@
+{
+  "nav": {
+    "brand": "SkillHub",
+    "home": "Beranda",
+    "howItWorks": "Cara Kerja",
+    "benefits": "Keuntungan",
+    "categories": "Kategori",
+    "faq": "FAQ",
+    "login": "Login",
+    "register": "Daftar sebagai Freelancer"
+  },
+  "hero": {
+    "headline": "Ubah Keahlian Anda Menjadi Penghasilan",
+    "subheadline": "Bangun layanan Anda, temukan client yang tepat, dan kembangkan karier freelance bersama SkillHub.",
+    "primaryCta": "Mulai Menjadi Freelancer",
+    "secondaryCta": "Pelajari Cara Kerja"
+  },
+  "stats": {
+    "title": "Dipercaya oleh ribuan freelancer Indonesia",
+    "freelancers": "12.000+",
+    "freelancersLabel": "Freelancer Aktif",
+    "services": "35.000+",
+    "servicesLabel": "Layanan Tersedia",
+    "projects": "80.000+",
+    "projectsLabel": "Proyek Diselesaikan",
+    "rating": "4.9/5",
+    "ratingLabel": "Rata-rata Rating"
+  },
+  "why": {
+    "title": "Kenapa Freelancer Memilih SkillHub?",
+    "item1Title": "Jangkau Client dengan Mudah",
+    "item1Desc": "Tampilkan keahlian Anda agar client yang membutuhkan dapat langsung menemukan dan memesan jasa Anda.",
+    "item2Title": "Sistem Pembayaran Safe Escrow",
+    "item2Desc": "Pembayaran ditampung aman oleh SkillHub dan langsung ditransfer ke akun Anda setelah proyek disetujui.",
+    "item3Title": "Kelola Pesanan Otomatis",
+    "item3Desc": "Manajemen proyek, lampiran hasil kerja, dan invoicing diproses dalam satu platform yang praktis.",
+    "item4Title": "Dukungan & Komunitas SkillHub",
+    "item4Desc": "Tim kami siap melayani dan mendampingi keamanan transaksi serta reputasi karier freelance Anda."
+  },
+  "benefits": {
+    "title": "Semua yang Anda Butuhkan untuk Sukses",
+    "subtitle": "SkillHub dirancang untuk membantu freelancer tumbuh, dari pemula hingga profesional berpengalaman.",
+    "b1": "Profil profesional terverifikasi",
+    "b2": "Kelola portofolio dengan mudah",
+    "b3": "Notifikasi pesanan real-time",
+    "b4": "Pesan langsung dengan client",
+    "b5": "Atur ketersediaan dan jadwal kerja",
+    "b6": "Pantau pendapatan & analitik",
+    "b7": "Bangun reputasi melalui ulasan"
+  },
+  "how": {
+    "title": "Langkah Mudah Menjadi Freelancer",
+    "step1Title": "1. Daftar sebagai Freelancer",
+    "step1Desc": "Daftar dengan KTP dan akun bank Anda untuk verifikasi identitas, kemudian posting pekerjaan Anda!",
+    "step2Title": "2. Posting Layanan Pekerjaan",
+    "step2Desc": "Siapkan portfolio dengan informasi pekerjaan profesional Anda, dan pekerjaan Anda akan diperiksa dalam waktu 48 jam.",
+    "step3Title": "3. Terima & Kerjakan Pesanan",
+    "step3Desc": "Terima pesanan langsung dari client dan berkomunikasi melalui workspace yang aman.",
+    "step4Title": "4. Serahkan Hasil & Terima Uangnya",
+    "step4Desc": "Serahkan hasil kerja akhir dan dapatkan ulasan dari pelanggan. Ulasan yang bagus akan mmebantu Anda mendapatkan kesempatan dipekerjakan lebih besar,Kirimkan hasil kerja akhir, dapatkan ulasan bintang, dan dana langsung ditransfer ke saldo Anda."
+  },
+  "calculator": {
+    "title": "Simulasikan Potensi Pendapatan Anda",
+    "subtitle": "Lihat seberapa banyak yang bisa Anda hasilkan di SkillHub berdasarkan jam kerja Anda.",
+    "hoursLabel": "Jam kerja per minggu:",
+    "hoursValue": "{{count}} jam",
+    "rateNote": "*Estimasi berdasarkan rata-rata tarif Rp 150.000/jam.",
+    "estimatedMonthly": "Estimasi Pendapatan Bulanan",
+    "cta": "Mulai Hasilkan Uang"
+  },
+  "categories": {
+    "title": "Kategori Terpopuler",
+    "subtitle": "Temukan area keahlian yang paling banyak dicari oleh calon client."
+  },
+  "services": {
+    "title": "Begini Tampilan Layanan yang Sukses",
+    "description": "Layanan yang profesional dan informatif mendapatkan lebih banyak pesanan. Buat layanan pertama Anda sekarang.",
+    "startingFrom": "Mulai dari",
+    "orders": "pesanan",
+    "cta": "Jelajahi Semua Layanan",
+    "card1Cat": "Web Development",
+    "card1Title": "Pembuatan Website Profesional & Responsif",
+    "card1Price": "Rp 500.000",
+    "card1Rating": "4.9",
+    "card1Orders": "128",
+    "card2Cat": "UI/UX Design",
+    "card2Title": "Desain UI/UX Aplikasi Mobile Modern",
+    "card2Price": "Rp 750.000",
+    "card2Rating": "5.0",
+    "card2Orders": "85"
+  },
+  "testimonials": {
+    "title": "Mereka Sudah Sukses di SkillHub",
+    "subtitle": "Dengarkan cerita nyata dari freelancer yang telah membangun karier dan penghasilan bersama kami.",
+    "text1": "Sejak bergabung SkillHub, penghasilan saya naik drastis! Platform ini sangat memudahkan saya mendapatkan client berkualitas tanpa harus bersaing harga serendah mungkin.",
+    "name1": "Ahmad Rizky",
+    "role1": "Full-Stack Developer · 2 tahun di SkillHub",
+    "text2": "SkillHub memberikan kebebasan untuk menetapkan harga sendiri. Sistem escrow membuat saya merasa aman dan client pun percaya untuk membayar penuh di muka.",
+    "name2": "Sari Dewi",
+    "role2": "UI/UX Designer · 1.5 tahun di SkillHub",
+    "text3": "Dalam 3 bulan pertama, saya sudah menutup 20 pesanan dari berbagai kota. Dashboard SkillHub membuat manajemen proyek jadi jauh lebih mudah.",
+    "name3": "Budi Santoso",
+    "role3": "Digital Marketer · 1 tahun di SkillHub"
+  },
+  "preview": {
+    "title": "Dashboard Freelancer yang Powerful",
+    "subtitle": "Kelola semua aspek bisnis freelance Anda dari satu tempat yang intuitif dan informatif.",
+    "cta": "Coba Sekarang Gratis",
+    "earnings": "Total Pendapatan",
+    "earningsVal": "Rp 12.5 Jt",
+    "activeOrders": "Pesanan Aktif",
+    "activeOrdersVal": "8 Proyek",
+    "rating": "Rating Anda",
+    "ratingVal": "4.9 ★",
+    "myServices": "Layanan Aktif",
+    "myServicesVal": "5 Layanan"
+  },
+  "faq": {
+    "title": "Pertanyaan yang Sering Diajukan",
+    "subtitle": "Temukan jawaban untuk pertanyaan umum seputar cara kerja SkillHub bagi freelancer.",
+    "q1": "Apa itu SkillHub?",
+    "a1": "SkillHub adalah platform marketplace digital di mana Anda dapat menjual keahlian dalam bentuk paket layanan profesional kepada client yang membutuhkan.",
+    "q2": "Bagaimana cara menjadi freelancer?",
+    "a2": "Klik tombol 'Mulai Menjadi Freelancer', lengkapi profil Anda, verifikasi akun, dan Anda dapat langsung membuat paket layanan pertama Anda.",
+    "q3": "Apakah saya bisa membuat lebih dari satu layanan?",
+    "a3": "Tentu saja! Anda bebas membuat beberapa paket layanan di kategori keahlian yang berbeda sesuai kompetensi Anda.",
+    "q4": "Bagaimana cara mendapatkan pesanan?",
+    "a4": "Layanan yang Anda publikasikan akan muncul di katalog pencarian client. Client yang tertarik dapat memilih layanan Anda dan melakukan pemesanan langsung.",
+    "q5": "Bagaimana pembayaran freelancer?",
+    "a5": "SkillHub menggunakan sistem rekening bersama (Escrow) yang aman. Dana dari client akan ditampung saat transaksi dimulai dan ditransfer ke saldo Anda setelah pekerjaan disetujui.",
+    "q6": "Bagaimana sistem rating dan review?",
+    "a6": "Setelah pesanan diselesaikan, client dapat memberikan penilaian bintang (1-5) dan ulasan yang akan ditampilkan di profil dan kartu layanan Anda untuk memperkuat reputasi."
+  },
+  "final": {
+    "title": "Siap Mengubah Keahlian Anda Menjadi Penghasilan?",
+    "description": "Bangun layanan Anda dan mulai temukan client pertama Anda di SkillHub.",
+    "button": "Daftar Sebagai Freelancer"
+  },
+  "footer": {
+    "tagline": "Platform freelance untuk membantu freelancer mengembangkan keahlian dan mendapatkan client.",
+    "col1Title": "Platform",
+    "col1L1": "Cari Freelancer",
+    "col1L2": "Cari Layanan",
+    "col1L3": "Cara Kerja",
+    "col2Title": "Freelancer",
+    "col2L1": "Menjadi Freelancer",
+    "col2L2": "Buat Layanan",
+    "col2L3": "Panduan Freelancer",
+    "col3Title": "Bantuan",
+    "col3L1": "FAQ",
+    "col3L2": "Pusat Bantuan",
+    "col3L3": "Hubungi Kami",
+    "col4Title": "Legal",
+    "col4L1": "Syarat & Ketentuan",
+    "col4L2": "Kebijakan Privasi",
+    "copyright": "© 2026 SkillHub Indonesia. Hak Cipta Dilindungi."
+  }
+}

@@ -6,7 +6,11 @@ export const loginApi = async (credentials) => {
 };
 
 export const registerCustomerApi = async (data) => {
-  const response = await api.post('/auth/register-customer', data);
+  const payload = {
+    password_confirmation: data.password,
+    ...data,
+  };
+  const response = await api.post('/auth/register-customer', payload);
   return response.data;
 };
 

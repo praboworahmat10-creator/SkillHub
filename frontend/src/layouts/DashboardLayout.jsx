@@ -100,8 +100,17 @@ const DashboardLayout = () => {
   }, []);
 
   const handleLogout = async () => {
-    await logout();
-    navigate('/login');
+    // Ambil role SEBELUM logout membersihkan state (userRole sudah ternormalisasi)
+    const roleBeforeLogout = userRole;
+
+    await logout(); // clear user state & token
+
+    // Gunakan window.location untuk hard redirect agar tidak di-intercept ProtectedRoute
+    if (roleBeforeLogout === 'freelancer') {
+      window.location.href = '/freelancer'; // Landing page khusus freelancer
+    } else {
+      window.location.href = '/';           // Landing page utama (client)
+    }
   };
 
   const handleSearch = (e) => {
@@ -183,11 +192,10 @@ const DashboardLayout = () => {
       label: 'Cari Kerja',
       sections: [
         {
-          title: 'Jelajahi',
+          title: 'Marketplace Pekerjaan',
           items: [
-            { to: '/dashboard/talent', icon: <FiSearch size={16} />, label: 'Semua Pekerjaan', desc: 'Temukan project yang cocok' },
-            { to: '/dashboard/talent', icon: <FiStar size={16} />, label: 'Pekerjaan Tersimpan', desc: 'Daftar pekerjaan favorit Anda' },
-            { to: '/dashboard/talent', icon: <FiTrendingUp size={16} />, label: 'Rekomendasi', desc: 'Project yang sesuai skill Anda' },
+            { to: '/dashboard/freelancer/browse-jobs', icon: <FiSearch size={16} />, label: 'Cari Pekerjaan', desc: 'Temukan project yang cocok' },
+            { to: '/dashboard/freelancer/proposals', icon: <FiFileText size={16} />, label: 'Proposal Terkirim', desc: 'Lacak status proposal Anda' },
           ]
         }
       ]
@@ -196,28 +204,28 @@ const DashboardLayout = () => {
       label: 'Pekerjaan Saya',
       sections: [
         {
-          title: 'Kontrak',
+          title: 'Layanan & Pesanan',
           items: [
-            { to: '/dashboard/freelancer/gigs', icon: <FiActivity size={16} />, label: 'Kontrak Aktif', desc: 'Pekerjaan yang sedang berjalan' },
-            { to: '/dashboard/freelancer/gigs', icon: <FiClock size={16} />, label: 'Riwayat Kontrak', desc: 'Pekerjaan yang telah selesai' },
+            { to: '/dashboard/freelancer/gigs', icon: <FiBriefcase size={16} />, label: 'Layanan Saya (My Gigs)', desc: 'Kelola paket jasa yang Anda tawarkan' },
+            { to: '/dashboard/freelancer/orders', icon: <FiActivity size={16} />, label: 'Pesanan Aktif', desc: 'Proyek yang sedang dikerjakan' },
           ]
         },
         {
-          title: 'Proposal',
+          title: 'Kontrak',
           items: [
-            { to: '/dashboard/freelancer/gigs', icon: <FiFileText size={16} />, label: 'Proposal Terkirim', desc: 'Lacak proposal Anda' },
+            { to: '/dashboard/freelancer/contracts', icon: <FiFileText size={16} />, label: 'Kontrak Saya', desc: 'Semua kontrak aktif & selesai' },
           ]
         }
       ]
     },
     {
-      label: 'Laporan',
+      label: 'Keuangan',
       sections: [
         {
           items: [
-            { to: '/dashboard/billing', icon: <FiTrendingUp size={16} />, label: 'Ringkasan Pendapatan', desc: 'Total penghasilan Anda' },
-            { to: '/dashboard/billing', icon: <FiCreditCard size={16} />, label: 'Riwayat Pembayaran', desc: 'Semua transaksi masuk' },
-            { to: '/dashboard/billing', icon: <FiBarChart2 size={16} />, label: 'Statistik Profil', desc: 'View, click, dan performa gig' },
+            { to: '/dashboard/freelancer/wallet', icon: <FiTrendingUp size={16} />, label: 'Dompet & Pendapatan', desc: 'Saldo dan riwayat penghasilan' },
+            { to: '/dashboard/freelancer/wallet', icon: <FiCreditCard size={16} />, label: 'Tarik Dana (Payout)', desc: 'Cairkan penghasilan ke rekening' },
+            { to: '/dashboard/freelancer/wallet', icon: <FiBarChart2 size={16} />, label: 'Statistik Performa', desc: 'View, click, dan performa gig' },
           ]
         }
       ]
@@ -227,11 +235,12 @@ const DashboardLayout = () => {
   const navStructure = userRole === 'freelancer' ? freelancerNav : clientNav;
 
   const isNavActive = (nav) => {
-    return nav.sections.some(s => s.items.some(item => {
-      if (item.to === '/dashboard/client' || item.to === '/dashboard/freelancer') {
+    if (!nav?.sections) return false;
+    return nav.sections.some(s => s?.items?.some(item => {
+      if (item?.to === '/dashboard/client' || item?.to === '/dashboard/freelancer') {
         return false;
       }
-      return location.pathname.startsWith(item.to);
+      return item?.to && location.pathname.startsWith(item.to);
     }));
   };
 

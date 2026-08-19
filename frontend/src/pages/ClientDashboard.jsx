@@ -18,10 +18,10 @@ const ClientDashboard = () => {
   const categories = ['Semua', 'UI/UX Design', 'Web Development', 'Mobile Apps', 'Brand & Logo'];
 
   const freelancers = [
-    { name: 'Diana Putri',   initial: 'DP', color: '#3b82f6', role: 'UI/UX Specialist',  skills: ['Figma', 'Prototyping'], rating: 5.0,  reviews: 32, rate: 'Rp 150rb/jam' },
-    { name: 'Rizky Pratama', initial: 'RP', color: '#10b981', role: 'Full Stack Dev',     skills: ['React', 'Laravel'],     rating: 4.9,  reviews: 18, rate: 'Rp 120rb/jam' },
-    { name: 'Siti Aisyah',   initial: 'SA', color: '#f59e0b', role: 'Brand Designer',     skills: ['Illustrator', 'Branding'], rating: 5.0, reviews: 45, rate: 'Rp 100rb/jam' },
-    { name: 'Andi Wijaya',   initial: 'AW', color: '#8b5cf6', role: 'SEO Specialist',     skills: ['Copywriting', 'SEO'],   rating: 4.8,  reviews: 12, rate: 'Rp 90rb/jam'  },
+    { id: 1, name: 'Diana Putri',   initial: 'DP', color: '#3b82f6', role: 'UI/UX Specialist',  skills: ['Figma', 'Prototyping'], rating: 5.0,  reviews: 32, rate: 'Rp 150rb/jam' },
+    { id: 2, name: 'Rizky Pratama', initial: 'RP', color: '#10b981', role: 'Full Stack Dev',     skills: ['React', 'Laravel'],     rating: 4.9,  reviews: 18, rate: 'Rp 120rb/jam' },
+    { id: 3, name: 'Siti Aisyah',   initial: 'SA', color: '#f59e0b', role: 'Brand Designer',     skills: ['Illustrator', 'Branding'], rating: 5.0, reviews: 45, rate: 'Rp 100rb/jam' },
+    { id: 4, name: 'Andi Wijaya',   initial: 'AW', color: '#8b5cf6', role: 'SEO Specialist',     skills: ['Copywriting', 'SEO'],   rating: 4.8,  reviews: 12, rate: 'Rp 90rb/jam'  },
   ];
 
   const activeProjects = [
@@ -71,6 +71,10 @@ const ClientDashboard = () => {
         style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}
       >
         <div className="d-flex flex-wrap gap-4">
+          <div style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+            ID Client: <span className="fw-bold text-primary">#CLT-{user ? String(user.id).padStart(5, '0') : '84920'}</span>
+          </div>
+          <div className="vr d-none d-md-block" style={{ backgroundColor: 'var(--border-color)' }}></div>
           <div style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
             Proyek Aktif: <span className="fw-bold" style={{ color: 'var(--text-main)' }}>5 Proyek</span>
           </div>
@@ -129,12 +133,13 @@ const ClientDashboard = () => {
           {freelancers.map((f, i) => (
             <div key={i} className="col-12 col-sm-6 col-lg-3">
               <div 
-                className="card border-0 rounded-4 p-3 h-100"
+                className="card border-0 rounded-4 p-3 h-100 cursor-pointer"
                 style={{ 
                   backgroundColor: 'var(--card-bg)', 
                   border: '1px solid var(--border-color)',
                   transition: 'transform 0.2s, box-shadow 0.2s' 
                 }}
+                onClick={() => navigate(`/dashboard/freelancers/${f.id}`)}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.1)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none'; }}
               >
@@ -147,7 +152,7 @@ const ClientDashboard = () => {
                     {f.initial}
                   </div>
                   <div>
-                    <div className="fw-bold" style={{ color: 'var(--text-main)', fontSize: '0.95rem' }}>{f.name}</div>
+                    <div className="fw-bold text-primary hover-underline" style={{ fontSize: '0.95rem' }}>{f.name}</div>
                     <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>{f.role}</div>
                   </div>
                 </div>
@@ -177,10 +182,13 @@ const ClientDashboard = () => {
                 {/* CTA */}
                 <button
                   className="btn w-100 fw-semibold"
-                  onClick={() => navigate('/dashboard/talent')}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/dashboard/freelancers/${f.id}`);
+                  }}
                   style={{ borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-color)', color: 'var(--text-main)', fontSize: '0.88rem', padding: '8px' }}
                 >
-                  Rekrut Talent
+                  Lihat Profil & Rekrut
                 </button>
               </div>
             </div>

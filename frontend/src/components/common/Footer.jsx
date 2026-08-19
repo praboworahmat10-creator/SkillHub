@@ -11,14 +11,14 @@ const Footer = () => {
       links: [
         { label: 'Cara Kerja SkillHub', to: '#' },
         { label: 'Cari Freelancer', to: '/explore' },
-        { label: 'Posting Pekerjaan', to: '/register-customer' },
+        { label: 'Posting Pekerjaan', to: '/register/client' },
         { label: 'Panduan Klien', to: '#' },
       ],
     },
     {
       title: 'Untuk Freelancer',
       links: [
-        { label: 'Daftar Jadi Freelancer', to: '/register-freelancer' },
+        { label: 'Daftar Jadi Freelancer', to: '/register/freelancer' },
         { label: 'Cara Mendapat Klien', to: '#' },
         { label: 'Panduan Freelancer', to: '#' },
         { label: 'Forum Komunitas', to: '#' },

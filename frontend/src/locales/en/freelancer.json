@@ -1,0 +1,149 @@
+{
+  "nav": {
+    "brand": "SkillHub",
+    "home": "Home",
+    "howItWorks": "How It Works",
+    "benefits": "Benefits",
+    "categories": "Categories",
+    "faq": "FAQ",
+    "login": "Login",
+    "register": "Sign Up as Freelancer"
+  },
+  "hero": {
+    "headline": "Turn Your Expertise Into Income",
+    "subheadline": "Build your services, connect with the right clients, and grow your freelance career with SkillHub.",
+    "primaryCta": "Start as Freelancer",
+    "secondaryCta": "Learn How It Works"
+  },
+  "stats": {
+    "title": "Trusted by thousands of freelancers",
+    "freelancers": "12,000+",
+    "freelancersLabel": "Active Freelancers",
+    "services": "35,000+",
+    "servicesLabel": "Services Available",
+    "projects": "80,000+",
+    "projectsLabel": "Projects Completed",
+    "rating": "4.9/5",
+    "ratingLabel": "Average Rating"
+  },
+  "why": {
+    "title": "Why Freelancers Choose SkillHub?",
+    "item1Title": "Reach Clients Easily",
+    "item1Desc": "Showcase your skills so clients needing your services can find and book you directly.",
+    "item2Title": "Safe Escrow Payment System",
+    "item2Desc": "Payments are held securely in Escrow and released directly to your account upon project approval.",
+    "item3Title": "Automated Order Management",
+    "item3Desc": "Project tracking, deliverables submission, and invoicing are streamlined in one place.",
+    "item4Title": "Dedicated Support & Community",
+    "item4Desc": "Our support team is here to assist with transaction security and your freelance growth."
+  },
+  "benefits": {
+    "title": "Everything You Need to Succeed",
+    "subtitle": "SkillHub is designed to help freelancers grow, from beginners to experienced professionals.",
+    "b1": "Verified professional profile",
+    "b2": "Manage portfolio with ease",
+    "b3": "Real-time order notifications",
+    "b4": "Direct messaging with clients",
+    "b5": "Set your availability & schedule",
+    "b6": "Track earnings & analytics",
+    "b7": "Build reputation via reviews"
+  },
+  "how": {
+    "title": "Simple Steps to Become a Freelancer",
+    "step1Title": "1. Register as a Freelancer",
+    "step1Desc": "Complete your professional profile verification and get ready to offer your skills.",
+    "step2Title": "2. Post Your Services",
+    "step2Desc": "Create clear service packages with your pricing and best portfolio samples.",
+    "step3Title": "3. Receive & Work on Orders",
+    "step3Desc": "Get direct orders from clients and collaborate seamlessly in a secure workspace.",
+    "step4Title": "4. Deliver & Get Paid",
+    "step4Desc": "Submit your final deliverables, earn star reviews, and receive payouts directly to your balance."
+  },
+  "categories": {
+    "title": "Popular Categories",
+    "subtitle": "Discover the most in-demand service categories clients are actively searching for."
+  },
+  "services": {
+    "title": "What a Successful Service Looks Like",
+    "description": "Professional and informative services attract more orders. Create your first service today.",
+    "startingFrom": "Starting from",
+    "orders": "orders",
+    "cta": "Explore All Services",
+    "card1Cat": "Web Development",
+    "card1Title": "Professional & Responsive Website Development",
+    "card1Price": "IDR 500,000",
+    "card1Rating": "4.9",
+    "card1Orders": "128",
+    "card2Cat": "UI/UX Design",
+    "card2Title": "Modern Mobile App UI/UX Design",
+    "card2Price": "IDR 750,000",
+    "card2Rating": "5.0",
+    "card2Orders": "85"
+  },
+  "testimonials": {
+    "title": "They Already Succeeded on SkillHub",
+    "subtitle": "Hear real stories from freelancers who built their careers and income with us.",
+    "text1": "Since joining SkillHub, my income has skyrocketed! The platform makes it easy to attract quality clients without competing on the lowest price.",
+    "name1": "Ahmad Rizky",
+    "role1": "Full-Stack Developer · 2 years on SkillHub",
+    "text2": "SkillHub gives me the freedom to set my own rates. The escrow system makes me feel secure, and clients trust paying upfront.",
+    "name2": "Sari Dewi",
+    "role2": "UI/UX Designer · 1.5 years on SkillHub",
+    "text3": "In my first 3 months, I closed 20 orders from different cities. The SkillHub freelancer dashboard makes project management so much easier.",
+    "name3": "Budi Santoso",
+    "role3": "Digital Marketer · 1 year on SkillHub"
+  },
+  "preview": {
+    "title": "A Powerful Freelancer Dashboard",
+    "subtitle": "Manage every aspect of your freelance business from one intuitive and informative place.",
+    "cta": "Try It Free Now",
+    "earnings": "Total Earnings",
+    "earningsVal": "IDR 12.5M",
+    "activeOrders": "Active Orders",
+    "activeOrdersVal": "8 Projects",
+    "rating": "Your Rating",
+    "ratingVal": "4.9 ★",
+    "myServices": "Active Services",
+    "myServicesVal": "5 Services"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about how SkillHub works for freelancers.",
+    "q1": "What is SkillHub?",
+    "a1": "SkillHub is a digital marketplace where you can package and sell your freelance skills to clients worldwide.",
+    "q2": "How do I become a freelancer?",
+    "a2": "Click 'Start as Freelancer', build your profile, verify your details, and publish your first service package.",
+    "q3": "Can I create multiple service packages?",
+    "a3": "Yes, you can publish as many service listings across various categories as your skillset covers.",
+    "q4": "How do I receive orders?",
+    "a4": "Clients browse service listings in our catalog and can place orders directly for your gigs.",
+    "q5": "How are freelancer payments processed?",
+    "a5": "SkillHub uses a secure Escrow system. Client funds are safely held during order processing and released upon project approval.",
+    "q6": "How does the rating and review system work?",
+    "a6": "Upon completion, clients submit star ratings (1-5) and feedback displayed publicly to build your trust score."
+  },
+  "final": {
+    "title": "Ready to Turn Your Expertise Into Income?",
+    "description": "Publish your services and start attracting your first clients on SkillHub today.",
+    "button": "Sign Up as Freelancer"
+  },
+  "footer": {
+    "tagline": "The freelance platform helping creators elevate their skills and connect with clients.",
+    "col1Title": "Platform",
+    "col1L1": "Find Freelancers",
+    "col1L2": "Explore Services",
+    "col1L3": "How It Works",
+    "col2Title": "Freelancer",
+    "col2L1": "Become Freelancer",
+    "col2L2": "Create Service",
+    "col2L3": "Freelancer Guide",
+    "col3Title": "Support",
+    "col3L1": "FAQ",
+    "col3L2": "Help Center",
+    "col3L3": "Contact Us",
+    "col4Title": "Legal",
+    "col4L1": "Terms of Service",
+    "col4L2": "Privacy Policy",
+    "copyright": "© 2026 SkillHub Indonesia. All rights reserved."
+  }
+}

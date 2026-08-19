@@ -68,6 +68,14 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
+    // Normalize role before clearing user state (same logic as getNormalizedRole)
+    const rawRole = user?.role?.name || user?.role || user?.role_id;
+    let currentRole = 'customer';
+    if (rawRole === 1 || rawRole === '1' || rawRole === 'admin') currentRole = 'admin';
+    else if (rawRole === 2 || rawRole === '2' || rawRole === 'freelancer') currentRole = 'freelancer';
+    else if (rawRole === 3 || rawRole === '3' || rawRole === 'customer') currentRole = 'customer';
+    else if (typeof rawRole === 'string') currentRole = rawRole.toLowerCase();
+
     try {
       if (token && !token.startsWith('demo_')) {
         await api.post('/auth/logout');
@@ -80,9 +88,19 @@ export const AuthProvider = ({ children }) => {
       localStorage.removeItem('skillhub_user');
       localStorage.removeItem('skillhub_token');
     }
+    return currentRole;
   };
 
-  const userRole = user?.role?.name || user?.role || 'guest';
+  const getNormalizedRole = () => {
+    if (!user) return 'guest';
+    const rawRole = user?.role?.name || user?.role || user?.role_id;
+    if (rawRole === 1 || rawRole === '1' || rawRole === 'admin') return 'admin';
+    if (rawRole === 2 || rawRole === '2' || rawRole === 'freelancer') return 'freelancer';
+    if (rawRole === 3 || rawRole === '3' || rawRole === 'customer') return 'customer';
+    return typeof rawRole === 'string' ? rawRole.toLowerCase() : 'guest';
+  };
+
+  const userRole = getNormalizedRole();
 
   return (
     <AuthContext.Provider value={{ user, token, userRole, login, logout, loading }}>

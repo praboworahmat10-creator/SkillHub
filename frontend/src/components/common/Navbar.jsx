@@ -11,6 +11,16 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
+  const handleLogout = async () => {
+    const roleBeforeLogout = userRole;
+    await logout();
+    if (roleBeforeLogout === 'freelancer') {
+      window.location.href = '/freelancer';
+    } else {
+      window.location.href = '/';
+    }
+  };
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -21,14 +31,24 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg sticky-navbar py-3">
       <div className="container">
-        {/* Brand Logo */}
-        <Link className="navbar-brand d-flex align-items-center fw-bold fs-4" to="/">
-          <div className="bg-primary text-white rounded-3 d-flex align-items-center justify-content-center me-2" style={{ width: '38px', height: '38px' }}>
-            <FiLayers size={22} />
-          </div>
-          <span className="text-primary">Skill</span>
-          <span className="text-dark dark:text-light">Hub</span>
-        </Link>
+        {/* Brand Logo & Jobboard Badge Button (Fastwork style) */}
+        <div className="d-flex align-items-center gap-2 flex-shrink-0 me-3">
+          <Link className="navbar-brand d-flex align-items-center fw-bold fs-4 me-0" to="/">
+            <div className="bg-primary text-white rounded-3 d-flex align-items-center justify-content-center me-2" style={{ width: '36px', height: '36px' }}>
+              <FiLayers size={20} />
+            </div>
+            <span className="text-primary">Skill</span>
+            <span className="text-dark dark:text-light">Hub</span>
+          </Link>
+
+          <Link
+            to="/jobboard"
+            className="btn btn-sm border rounded-pill px-3 py-1 fw-bold text-dark dark:text-light ms-1 d-none d-sm-inline-flex align-items-center gap-1 hover-lift shadow-2xs"
+            style={{ fontSize: '0.8rem', borderColor: '#cbd5e1', backgroundColor: '#ffffff' }}
+          >
+            Jobboard
+          </Link>
+        </div>
 
         {/* Mobile Toggle Button */}
         <div className="d-flex align-items-center gap-2 d-lg-none">
@@ -46,31 +66,32 @@ const Navbar = () => {
         {/* Navbar Links & Controls */}
         <div className={`collapse navbar-collapse ${isMobileMenuOpen ? 'show mt-3' : ''}`}>
           {/* Search Bar Input */}
-          <form className="mx-lg-auto my-2 my-lg-0" style={{ maxWidth: '380px', width: '100%' }} onSubmit={handleSearchSubmit}>
+          <form className="mx-lg-3 my-2 my-lg-0" style={{ maxWidth: '300px', width: '100%' }} onSubmit={handleSearchSubmit}>
             <div className="position-relative">
               <input
                 type="text"
-                className="form-control rounded-pill pe-5 ps-4 py-2 bg-light dark:bg-dark text-dark dark:text-light border-0 shadow-sm"
-                placeholder="Cari jasa programmer, designer..."
+                className="form-control rounded-pill pe-4 ps-4 py-1.5 bg-light dark:bg-dark text-dark dark:text-light border-0 shadow-2xs"
+                style={{ fontSize: '0.85rem' }}
+                placeholder="Cari programmer, designer..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <button type="submit" className="btn text-muted position-absolute end-0 top-50 translate-middle-y me-2 border-0 bg-transparent">
-                <FiSearch size={18} />
+              <button type="submit" className="btn text-muted position-absolute end-0 top-50 translate-middle-y me-2 border-0 bg-transparent p-1">
+                <FiSearch size={16} />
               </button>
             </div>
           </form>
 
           {/* Navigation Links */}
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 me-3 align-items-lg-center fw-medium">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 me-3 align-items-lg-center fw-medium" style={{ fontSize: '0.92rem' }}>
             <li className="nav-item">
-              <Link className="nav-link px-3 text-secondary-dark" to="/">Home</Link>
+              <Link className="nav-link px-2.5 text-secondary-dark" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link px-3 text-secondary-dark" to="/explore">Explore</Link>
+              <Link className="nav-link px-2.5 text-secondary-dark" to="/explore">Explore</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link px-3 text-secondary-dark" to="/register-freelancer">Jadi Freelancer</Link>
+              <Link className="nav-link px-2.5 text-secondary-dark" to="/freelancer">Jadi Freelancer</Link>
             </li>
           </ul>
 
@@ -104,14 +125,14 @@ const Navbar = () => {
                   </li>
                   {userRole === 'customer' && (
                     <li>
-                      <Link className="dropdown-item rounded-3 py-2 d-flex align-items-center gap-2" to="/customer/dashboard">
-                        <FiUser size={16} /> Dashboard Customer
+                      <Link className="dropdown-item rounded-3 py-2 d-flex align-items-center gap-2" to="/dashboard/client">
+                        <FiUser size={16} /> Dashboard Client
                       </Link>
                     </li>
                   )}
                   {userRole === 'freelancer' && (
                     <li>
-                      <Link className="dropdown-item rounded-3 py-2 d-flex align-items-center gap-2" to="/freelancer/dashboard">
+                      <Link className="dropdown-item rounded-3 py-2 d-flex align-items-center gap-2" to="/dashboard/freelancer">
                         <FiBriefcase size={16} /> Dashboard Freelancer
                       </Link>
                     </li>
@@ -125,7 +146,7 @@ const Navbar = () => {
                   )}
                   <li><hr className="dropdown-divider" /></li>
                   <li>
-                    <button className="dropdown-item text-danger rounded-3 py-2 d-flex align-items-center gap-2" onClick={logout}>
+                    <button className="dropdown-item text-danger rounded-3 py-2 d-flex align-items-center gap-2" onClick={handleLogout}>
                       <FiLogOut size={16} /> Keluar
                     </button>
                   </li>
@@ -134,7 +155,7 @@ const Navbar = () => {
             ) : (
               <div className="d-flex align-items-center gap-2">
                 <Link to="/login" className="btn btn-outline-sh px-4">Masuk</Link>
-                <Link to="/register-customer" className="btn btn-primary-sh px-4">Daftar</Link>
+                <Link to="/register" className="btn btn-primary-sh px-4">Daftar</Link>
               </div>
             )}
           </div>

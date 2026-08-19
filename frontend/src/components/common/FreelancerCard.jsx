@@ -1,10 +1,25 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FiStar, FiMapPin, FiCheckCircle } from 'react-icons/fi';
 import { formatRupiah, formatRating } from '../../utils/formatters';
 
 const FreelancerCard = ({ freelancer }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    if (freelancer?.id) {
+      navigate(`/freelancers/${freelancer.id}`);
+    }
+  };
+
   return (
-    <div className="sh-card p-4 h-100 d-flex flex-column align-items-center text-center">
+    <div
+      className="sh-card p-4 h-100 d-flex flex-column align-items-center text-center"
+      onClick={handleCardClick}
+      style={{ cursor: 'pointer', transition: 'transform 0.2s, box-shadow 0.2s' }}
+      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(59,130,246,0.15)'; }}
+      onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = ''; }}
+    >
       <div className="position-relative mb-3">
         <img
           src={freelancer.avatar}
@@ -43,7 +58,10 @@ const FreelancerCard = ({ freelancer }) => {
           <span className="text-muted text-xs d-block">Tarif Per Jam</span>
           <span className="fw-bold" style={{ color: 'var(--text-main)' }}>{formatRupiah(freelancer.hourly_rate)}</span>
         </div>
-        <button className="btn btn-outline-sh btn-sm px-3">Lihat Profil</button>
+        <button
+          className="btn btn-outline-sh btn-sm px-3"
+          onClick={e => { e.stopPropagation(); handleCardClick(); }}
+        >Lihat Profil</button>
       </div>
     </div>
   );
