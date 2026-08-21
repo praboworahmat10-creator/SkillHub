@@ -200,10 +200,17 @@ const RegisterCustomerPage = () => {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   className={`form-control bg-light border-start-0 border-end-0 ps-0 ${errors.password ? 'is-invalid' : ''}`}
-                  placeholder="Minimal 10 karakter"
+                  placeholder="Min. 10 karakter, angka & simbol"
                   {...register('password', {
                     required: 'Password wajib diisi',
-                    minLength: { value: 10, message: 'Password minimal 10 karakter' }
+                    minLength: { value: 10, message: 'Password minimal 10 karakter' },
+                    validate: (val) => {
+                      if (!/[A-Z]/.test(val)) return 'Harus mengandung setidaknya 1 huruf besar';
+                      if (!/[a-z]/.test(val)) return 'Harus mengandung setidaknya 1 huruf kecil';
+                      if (!/[0-9]/.test(val)) return 'Harus mengandung setidaknya 1 angka';
+                      if (!/[@$!%*?&_\-#]/.test(val)) return 'Harus mengandung setidaknya 1 karakter khusus (@$!%*?&_-#)';
+                      return true;
+                    }
                   })}
                 />
                 <button
